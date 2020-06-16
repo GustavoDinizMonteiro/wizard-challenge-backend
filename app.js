@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const path = require('path')
 const morgan = require('morgan')
 const compression = require('compression')
 

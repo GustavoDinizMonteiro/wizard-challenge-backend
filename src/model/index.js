@@ -33,7 +33,7 @@ module.exports = () => {
             process.env.PASSWORD,
             {
                 host: process.env.HOST,
-                dialect: 'mysql',
+                dialect: 'postgres',
                 logging: false,
                 pool: {
                     max: 5,
