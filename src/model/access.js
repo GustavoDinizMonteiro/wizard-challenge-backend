@@ -5,13 +5,19 @@ module.exports = (sequelize, DataType) => {
             allowNull: false,
             unique: true
         },
+
         pass: {
             type: DataType.STRING,
             allowNull: false
         },
+
         phone: {
             type: DataType.STRING,
             allowNull: false
+        },
+
+        token: {
+            type: DataType.STRING
         }
     }, { tableName: 'access' })
 
