@@ -1,0 +1,23 @@
+{
+  "name": "wizard-backend",
+  "version": "1.0.0",
+  "description": "A backend application for wizard challenge.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoDinizMonteiro/wizard-challenge-backend.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Gustavo Monteiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoDinizMonteiro/wizard-challenge-backend/issues"
+  },
+  "homepage": "https://github.com/GustavoDinizMonteiro/wizard-challenge-backend#readme"
+}
