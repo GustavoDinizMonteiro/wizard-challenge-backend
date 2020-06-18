@@ -12,12 +12,13 @@ module.exports = app => {
 
     const getUserByCrendentials = async(email, pass) => {
         const user = await User.findOne({
-            where: { email, active: true },
+            where: { active: true },
             attributes: ['cpf'],
             include: [{
                 model: Access,
-                attributes: ['email', 'pass'],
-                where: { pass: md5(pass) }
+                as: 'access',
+                attributes: ['id', 'email', 'pass'],
+                where: { pass: md5(pass), email }
             }],
             raw: true,
             nest: true
@@ -27,7 +28,9 @@ module.exports = app => {
     }
 
     const generateToken = async(user) => {
-        return jwt.sign(user, process.env.KEY)
+        const token = jwt.sign(user, process.env.KEY)
+        await Access.update({ token }, { where: { id: user.access.id } })
+        return token
     }
 
     const createUser = async(userData) => {

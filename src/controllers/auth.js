@@ -15,9 +15,8 @@ module.exports = app => {
                 return res.status(401).json({ message: 'Bad credentials' })
             }
 
-            res.status(200).json({
-                token: generateToken(user)
-            })
+            const token = await generateToken(user)
+            res.status(200).json({ token })
         } catch (err) {
             Logger.info(`Get error ${err} in signin.`)
             res.status(400).json(err.message)

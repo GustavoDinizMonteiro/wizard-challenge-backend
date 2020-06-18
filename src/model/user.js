@@ -26,7 +26,7 @@ module.exports = (sequelize, DataType) => {
     User.associate = models => {
         User.belongsTo(models.Country, { foreignKey: 'countryId' })
         User.belongsTo(models.Gender, { foreignKey: 'genderId' })
-        User.belongsTo(models.Access, { foreignKey: 'accessId' })
+        User.belongsTo(models.Access, { foreignKey: 'accessId', as: 'access' })
     }
 
     return User
