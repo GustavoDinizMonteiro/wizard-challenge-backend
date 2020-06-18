@@ -1,0 +1,39 @@
+ 
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+    - 5432
+    ports:
+      - 5432:5432
+    environment:
+         - POSTGRES_PASSWORD=${DB_USER}
+         - POSTGRES_USER=#{DB_PASS}
+         - POSTGRES_DB=challenge
+    restart: unless-stopped
+# APP*****************************************
+  nodeapp:
+    build: .
+    command: npm start
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE=challenge
+      - HOST=127.0.0.1
+      - DB_USER=${DB_USER}
+      - PASSWORD=#{DB_PASS}
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+volumes:
+    postgres-data:
